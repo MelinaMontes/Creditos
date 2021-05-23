@@ -37,6 +37,8 @@ public class ABM {
                             alta();
                         } catch (ClienteDNIException exdni) {
                             System.out.println("Error en el DNI. Indique uno valido");
+                        } catch (ClienteNombreException eNombreException){
+                            System.out.println("Error al ingresar nombre. Indique uno valido");
                         }
                         break;
 
