@@ -16,6 +16,7 @@ public class ABM {
     public static Scanner Teclado = new Scanner(System.in);
 
     protected ClienteManager ABMCliente = new ClienteManager();
+    protected PrestamoManager ABMPrestamo = new PrestamoManager();
 
     public void iniciar() throws Exception {
 
@@ -37,7 +38,7 @@ public class ABM {
                             alta();
                         } catch (ClienteDNIException exdni) {
                             System.out.println("Error en el DNI. Indique uno valido");
-                        } catch (ClienteNombreException eNombreException){
+                        } catch (ClienteNombreException eNombreException) {
                             System.out.println("Error al ingresar nombre. Indique uno valido");
                         }
                         break;
@@ -56,6 +57,14 @@ public class ABM {
 
                     case 5:
                         listarPorNombre();
+                        break;
+
+                    case 6:
+                        listarPrestamo();
+                        break;
+
+                    case 7:
+                        generarPrestamo();
                         break;
 
                     default:
@@ -246,6 +255,13 @@ public class ABM {
         }
     }
 
+    public void listarPrestamo() {
+
+    }
+
+    public void generarPrestamo() {
+    }
+
     public void mostrarCliente(Cliente cliente) {
 
         System.out.print("Id: " + cliente.getClienteId() + " Nombre: " + cliente.getNombre() + " DNI: "
@@ -262,12 +278,14 @@ public class ABM {
 
     public static void printOpciones() {
         System.out.println("=======================================");
-        System.out.println("");
+        System.out.println("INGRESE LA OPCION A REALIZAR");
         System.out.println("1. Para agregar un cliente.");
         System.out.println("2. Para eliminar un cliente.");
         System.out.println("3. Para modificar un cliente.");
         System.out.println("4. Para ver el listado.");
         System.out.println("5. Buscar un cliente por nombre especifico(SQL Injection)).");
+        System.out.println("6. Listado de prestamos. ");
+        System.out.println("7: Generar prestamo a un cliente existente.");
         System.out.println("0. Para terminar.");
         System.out.println("");
         System.out.println("=======================================");
