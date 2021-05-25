@@ -55,7 +55,18 @@ public class PrestamoManager {
 
         return prestamo;
     }
+    public List <Prestamo> listarTodos(){ //ESTO NO SE QUE HARÁ
+    Session session = sessionFactory.openSession();
 
+    /// NUNCA HARCODEAR SQLs nativos en la aplicacion.
+    // ESTO es solo para nivel educativo
+    Query query = session.createNativeQuery("SELECT * FROM cliente", Prestamo.class);
+    // query = session.createQuery("From Obse")
+    List<Prestamo> todos = query.getResultList();
+
+    return todos;
+
+}
 
     
 }

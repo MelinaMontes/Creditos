@@ -256,13 +256,38 @@ public class ABM {
     }
 
     public void listarPrestamo() {
+        System.out.println("Listado de prestamos otorgados:");
 
     }
 
     public void generarPrestamo() {
+
+        System.out.println("Ingrese el ID de cliente:");
+        Teclado.nextLine();
+
+        Prestamo prestamo = new Prestamo();
+        System.out.println("Ingrese el importe:");
+        Teclado.nextLine();
+       //prestamo.setImporte(Teclado.nextLine());
+        System.out.println("Ingrese cantidad de cuotas:");
+        prestamo.setCuotas(Teclado.nextInt());
+        Teclado.nextLine();
+      ABMPrestamo.create(prestamo);
+      System.out.println("El prestamo fue otorgado con exito" +prestamo.getPrestamoId());
+       //prestamo.getFecha(Teclado.nextLine());
+
+      
+
+        
+
+        
+
+        
     }
 
     public void mostrarCliente(Cliente cliente) {
+
+
 
         System.out.print("Id: " + cliente.getClienteId() + " Nombre: " + cliente.getNombre() + " DNI: "
                 + cliente.getDni() + " Domicilio: " + cliente.getDireccion());
@@ -276,6 +301,17 @@ public class ABM {
         System.out.println(" Fecha Nacimiento: " + fechaNacimientoStr);
     }
 
+
+   //esto no hace nada
+    public void listarPrestamo (Prestamo prestamo){
+        System.out.println("Id"+ prestamo.getPrestamoId() + "Nombre:" + prestamo.getCliente() + "Cuotas:" + prestamo.getCuotas()+ "Importe:" + prestamo.getFecha());
+        List<Prestamo>prestamos=ABMPrestamo.listarTodos();
+        for(Prestamo p : prestamos ){
+            listarPrestamo(p);
+
+     
+        }
+    }
     public static void printOpciones() {
         System.out.println("=======================================");
         System.out.println("INGRESE NUMERO DE OPCION A REALIZAR");

@@ -26,8 +26,6 @@ public class Prestamo {
     @JoinColumn(name = "cliente_id", referencedColumnName = "cliente_id")
     private Cliente cliente;
 
-
-    
     public int getPrestamoId() {
         return prestamoId;
     }
