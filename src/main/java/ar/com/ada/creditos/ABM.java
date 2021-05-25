@@ -278,7 +278,7 @@ public class ABM {
 
     public static void printOpciones() {
         System.out.println("=======================================");
-        System.out.println("INGRESE LA OPCION A REALIZAR");
+        System.out.println("INGRESE NUMERO DE OPCION A REALIZAR");
         System.out.println("1. Para agregar un cliente.");
         System.out.println("2. Para eliminar un cliente.");
         System.out.println("3. Para modificar un cliente.");
