@@ -30,7 +30,7 @@ public class Cliente {
     @Temporal(TemporalType.DATE) //SOLO Poner esto si no queremos manejar HORA en el DB Server.
     private Date fechaNacimiento;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL) //de uno a muchos
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Prestamo> prestamos = new ArrayList<>();
 
     public Cliente(String nombre) {
@@ -112,6 +112,12 @@ public class Cliente {
     }
 
     public void agregarPrestamo(Prestamo prestamo) {
-        this.prestamos.add(prestamo);
+        if(!prestamos.contains(prestamo)){
+            prestamos.add(prestamo);
+            prestamo.setCliente(this);
+        
+
+        }
+    
     }
 }

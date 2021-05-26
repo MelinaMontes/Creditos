@@ -1,4 +1,5 @@
 package ar.com.ada.creditos.managers;
+
 import java.util.List;
 import java.util.logging.Level;
 
@@ -11,7 +12,6 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import ar.com.ada.creditos.entities.*;
-
 
 public class PrestamoManager {
     protected SessionFactory sessionFactory;
@@ -46,6 +46,7 @@ public class PrestamoManager {
         session.getTransaction().commit();
         session.close();
     }
+
     public Prestamo read(int prestamoId) {
         Session session = sessionFactory.openSession();
 
@@ -55,18 +56,18 @@ public class PrestamoManager {
 
         return prestamo;
     }
-    public List <Prestamo> listarTodos(){ //ESTO NO SE QUE HARÁ
-    Session session = sessionFactory.openSession();
 
-    /// NUNCA HARCODEAR SQLs nativos en la aplicacion.
-    // ESTO es solo para nivel educativo
-    Query query = session.createNativeQuery("SELECT * FROM cliente", Prestamo.class);
-    // query = session.createQuery("From Obse")
-    List<Prestamo> todos = query.getResultList();
+    public List<Prestamo> mostrarTodos() { // ESTO NO SE QUE HARÁ
+        Session session = sessionFactory.openSession();
 
-    return todos;
+        /// NUNCA HARCODEAR SQLs nativos en la aplicacion.
+        // ESTO es solo para nivel educativo
+        Query query = session.createNativeQuery("SELECT * FROM prestamo", Prestamo.class);
+        // query = session.createQuery("From Obse")
+        List<Prestamo> todos = query.getResultList();
 
-}
+        return todos;
 
-    
+    }
+
 }

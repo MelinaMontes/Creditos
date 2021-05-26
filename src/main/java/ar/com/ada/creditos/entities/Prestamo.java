@@ -13,6 +13,7 @@ public class Prestamo {
     private int prestamoId;
 
     @Temporal(TemporalType.DATE)
+    @Column (name = "fecha_prestamo")
     private Date fecha;
 
     private BigDecimal importe;
