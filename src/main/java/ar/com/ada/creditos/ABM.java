@@ -65,7 +65,7 @@ public class ABM {
                         break;
 
                     case 7:
-                       altaPrestamo();
+                        altaPrestamo();
                         break;
 
                     default:
@@ -102,7 +102,7 @@ public class ABM {
 
         cliente.setDni(Teclado.nextInt());
         Teclado.nextLine();
-        
+
         System.out.println("Ingrese la direccion:");
         cliente.setDireccion(Teclado.nextLine());
 
@@ -113,7 +113,7 @@ public class ABM {
         if (domAlternativo != null)
             cliente.setDireccionAlternativa(domAlternativo);
 
-        System.out.println("Ingrese fecha de nacimiento:");
+        System.out.println("Ingrese fecha de nacimiento (dd/MM/yy):");
         Date fecha = null;
         DateFormat dateformatArgentina = new SimpleDateFormat("dd/MM/yy");
 
@@ -122,14 +122,7 @@ public class ABM {
 
         ABMCliente.create(cliente);
 
-        /*
-         * Si concateno el OBJETO directamente, me trae todo lo que este en el metodo
-         * toString() mi recomendacion es NO usarlo para imprimir cosas en pantallas, si
-         * no para loguear info Lo mejor es usar:
-         * System.out.println("Cliente generada con exito.  " + cliente.getClienteId);
-         */
-
-        System.out.println("Cliente generado con exito.  " + cliente.getClienteId());
+        System.out.println("Cliente generado con exito. Cliente Id:  " + cliente.getClienteId());
 
     }
 
@@ -175,8 +168,6 @@ public class ABM {
     }
 
     public void modifica() throws Exception {
-        // System.out.println("Ingrese el nombre de la cliente a modificar:");
-        // String n = Teclado.nextLine();
 
         System.out.println("Ingrese el ID del cliente que desea modificar:");
         int id = Teclado.nextInt();
@@ -217,7 +208,7 @@ public class ABM {
 
                     break;
                 case 5:
-                    System.out.println("Ingrese fecha de nacimiento:");
+                    System.out.println("Ingrese fecha de nacimiento (dd/MM/yy):");
                     Date fecha = null;
                     DateFormat dateformatArgentina = new SimpleDateFormat("dd/MM/yy");
 
@@ -230,7 +221,7 @@ public class ABM {
 
             ABMCliente.update(clienteEncontrado);
 
-            System.out.println("El registro de " + clienteEncontrado.getNombre() + " ha sido modificado.");
+            System.out.println("El registro de " + clienteEncontrado.getNombre() + " ha sido modificado con exito.");
 
         } else {
             System.out.println("Cliente no encontrado.");
@@ -258,6 +249,8 @@ public class ABM {
     }
 
     public void listarPrestamos() {
+        System.out.println("** LISTADO DE PRESTAMOS ACTIVOS **");
+        System.out.println("");
 
         List<Prestamo> todosLosprestamos = ABMPrestamo.mostrarTodos();
         for (Prestamo p : todosLosprestamos) {
@@ -281,13 +274,13 @@ public class ABM {
         prestamo.setFechaAlta(new Date());
 
         System.out.println("Ingrese ID de cliente:");
-        
+
         Cliente cliente_id = ABMCliente.read(Teclado.nextInt());
         prestamo.setCliente(cliente_id);
 
         ABMPrestamo.create(prestamo);
 
-        System.out.println("El prestamo fue otorgado con exito" + prestamo.getPrestamoId());
+        System.out.println("El prestamo fue otorgado con exito. Prestamo Id: " + prestamo.getPrestamoId());
 
     }
 
@@ -306,7 +299,7 @@ public class ABM {
     }
 
     public void mostrarPrestamo(Prestamo prestamo) {
-        System.out.println("Id Préstamo: " + prestamo.getPrestamoId() + " Datos Cliente: " + prestamo.getCliente()
+        System.out.println("Id Prestamo: " + prestamo.getPrestamoId() + " Datos Cliente: " + prestamo.getCliente()
                 + " Cuotas: " + prestamo.getCuotas() + " Importe: " + prestamo.getImporte());
 
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -320,7 +313,7 @@ public class ABM {
 
     public static void printOpciones() {
         System.out.println("=======================================");
-        System.out.println("INGRESE NUMERO DE OPCION A REALIZAR");
+        System.out.println("INGRESE NUMERO DE OPCION A REALIZAR :");
         System.out.println("1. Para agregar un cliente.");
         System.out.println("2. Para eliminar un cliente.");
         System.out.println("3. Para modificar un cliente.");

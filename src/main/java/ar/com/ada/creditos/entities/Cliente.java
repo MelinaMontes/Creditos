@@ -13,7 +13,7 @@ import java.util.*;
 public class Cliente {
     @Id
     @Column(name = "cliente_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //AUTOINCREMENTAL
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int clienteId;
 
     private String nombre;
@@ -27,7 +27,7 @@ public class Cliente {
     private String direccionAlternativa;
 
     @Column(name = "fecha_nacimiento")
-    @Temporal(TemporalType.DATE) //SOLO Poner esto si no queremos manejar HORA en el DB Server.
+    @Temporal(TemporalType.DATE) // SOLO Poner esto si no queremos manejar HORA en el DB Server.
     private Date fechaNacimiento;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -53,8 +53,8 @@ public class Cliente {
         return nombre;
     }
 
-    public void setNombre(String nombre) throws ClienteNombreException{
-        if(nombre.isEmpty()){
+    public void setNombre(String nombre) throws ClienteNombreException {
+        if (nombre.isEmpty()) {
             throw new ClienteNombreException(this, "Indique un nombre");
         }
         this.nombre = nombre;
@@ -112,12 +112,11 @@ public class Cliente {
     }
 
     public void agregarPrestamo(Prestamo prestamo) {
-        if(!prestamos.contains(prestamo)){
+        if (!prestamos.contains(prestamo)) {
             prestamos.add(prestamo);
             prestamo.setCliente(this);
-        
 
         }
-    
+
     }
 }

@@ -2,9 +2,6 @@ package ar.com.ada.creditos.excepciones;
 
 import ar.com.ada.creditos.entities.*;
 
-/**
- * ClienteInfoException
- */
 public class ClienteInfoException extends Exception {
 
     private Cliente cliente;
