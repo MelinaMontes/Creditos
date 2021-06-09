@@ -17,6 +17,7 @@ public class ABM {
 
     protected ClienteManager ABMCliente = new ClienteManager();
     protected PrestamoManager ABMPrestamo = new PrestamoManager();
+    protected ReporteManager ABMReporte = new ReporteManager();
 
     public void iniciar() throws Exception {
 
@@ -24,6 +25,7 @@ public class ABM {
 
             ABMCliente.setup();
             ABMPrestamo.setup();
+            ABMReporte.setup();
 
             printOpciones();
 
@@ -235,6 +237,8 @@ public class ABM {
         for (Cliente c : todos) {
             mostrarCliente(c);
         }
+        int cantidadClientes=ABMCliente.contarClienteQueryNativa();
+        System.out.println("Cantidad total de clientes: " + cantidadClientes );
     }
 
     public void listarPorNombre() {
@@ -246,6 +250,7 @@ public class ABM {
         for (Cliente cliente : clientes) {
             mostrarCliente(cliente);
         }
+       
     }
 
     public void listarPrestamos() {

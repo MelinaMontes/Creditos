@@ -80,7 +80,7 @@ public class Prestamo {
     }
     // ENUMERADO
 
-    public EstadoPrestamoEnum getEstadoId() {
+  /*  public EstadoPrestamoEnum getEstadoId() {
 
         return EstadoPrestamoEnum.parse(this.estadoId);
     }
@@ -88,7 +88,7 @@ public class Prestamo {
     public void setEstadoId(EstadoPrestamoEnum estadoId) {
         this.estadoId = estadoId.getValue();
     }
-
+*/
     // enumerado
     public enum EstadoPrestamoEnum {
         SOLICITADO(1), RECHAZADO(2), PENDIENTE_APROBACION(3), APROBADO(4), INCOBRABLE(5), CANCELADO(6),
@@ -101,7 +101,7 @@ public class Prestamo {
             this.value = value;
         }
 
-        public int getValue() {
+     /*   public int getValue() {
             return value;
         }
 
@@ -115,6 +115,6 @@ public class Prestamo {
             }
             return status;
         }
-
+*/
     }
 }

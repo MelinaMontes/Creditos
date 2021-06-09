@@ -107,12 +107,28 @@ public class ClienteManager {
 
         Session session = sessionFactory.openSession();
 
-        Query query = session.createNativeQuery("SELECT * FROM cliente where nombre = '" + nombre + "'", Cliente.class);
+        Query query= session.createNativeQuery("SELECT * FROM cliente where nombre = ?");
+        
 
-        List<Cliente> clientes = query.getResultList();
+        List<Cliente> clientesHackeado = query.getResultList();
 
-        return clientes;
-
+        Query queryConParametrosSql= session.createNativeQuery("SELECT * FROM cliente where nombre = ?" , Cliente.class);
+        queryConParametrosSql.setParameter(1, nombre);
+        return clientesHackeado;
     }
+   
+   
+
+
+//Cuenta cantidad total de clientes
+public int contarClienteQueryNativa(){
+    Session session = sessionFactory.openSession();
+
+    Query query = session.createNativeQuery("SELECT count(*) FROM cliente");
+
+    int resultado = ((Number)query.getSingleResult()).intValue();
+    return resultado;
+
+}
 
 }
